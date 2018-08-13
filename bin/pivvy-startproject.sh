@@ -27,7 +27,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-pivvy_DIR=$1
+PIVVY_DIR=$1
 REGULAR_NAME=$2
 SNAKE_CASE_NAME=$3
 DOC_NAME=$4
@@ -35,9 +35,10 @@ DOC_NAME=$4
 mkdir $REGULAR_NAME
 pushd $REGULAR_NAME
 
-cp -r $pivvy_DIR/project_tpl/* .
+cp -r $PIVVY_DIR/project_tpl/* .
 mkdir bundle/pivvy
-cp $pivvy_DIR/__init__.py bundle/pivvy/
+cp $PIVVY_DIR/__init__.py bundle/pivvy/
+cp $PIVVY_DIR/_detail.py bundle/pivvy/
 
 mv _gitignore .gitignore
 
