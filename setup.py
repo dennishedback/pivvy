@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-from vimpyre import __VERSION__
+from pivvy import __VERSION__
 
 import os
 import sys
@@ -14,7 +14,7 @@ dependencies = [x.split("=")[0].strip()
                 for x in open("requirements.txt").readlines()]
 
 setup(
-    name="vimpyre",
+    name="pivvy",
     version=".".join(str(x) for x in __VERSION__),
     description="Python framework for painless development of vim plugins",
     long_description=open("README.md").read(),
@@ -23,10 +23,12 @@ setup(
     author="Dennis Hedback",
     author_email="d.hedback@gmail.com",
     install_requires=dependencies,
-    packages=["vimpyre", ],
-    scripts=["bin/vimpyre-startproject.sh"],
+    packages=["pivvy", ],
+    scripts=["bin/pivvy-startproject.sh"],
     entry_points={
-        "console_scripts": ["vimpyre=vimpyre.cli:main"],
+        "console_scripts": [
+            "pivvy=pivvy.cli:main",
+        ]
     },
     classifiers=(
         'Development Status :: 4 - Beta',
@@ -36,4 +38,5 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.6',
     ),
+    include_package_data=True,
 )

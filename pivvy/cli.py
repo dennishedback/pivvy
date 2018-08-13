@@ -1,5 +1,3 @@
-#! /bin/bash
-
 # Copyright (c) 2018, Dennis Hedback
 # All rights reserved.
 #
@@ -27,12 +25,40 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-mkdir $1
-pushd $1
-git init
-cp -r $2/* .
-mv _gitignore .gitignore
-git add .gitignore
-git add *
-git commit -m "Automatically created by 'vimpyre startproject'"
-popd
+import re
+import os
+import sys
+from docopt import docopt
+from pivvy import __VERSION__
+from subprocess import call
+
+
+def main():
+    """
+    Usage: pivvy [-h|--help] [-v|--version]
+                   <command> [<args>...]
+
+    Commands:
+        startproject <name>  Creates a new project
+
+    Options:
+        -h --help     Show this message
+        -v --version  Show version information
+    """
+    version = "pivvy " + ".".join(str(n) for n in __VERSION__)
+    args = docopt(main.__doc__, version=version, options_first=True)
+    command = args["<command>"]
+    command_args = args["<args>"]
+    # argv = [sys.argv[0], command] + command_args
+    if command == "startproject":
+        if len(command_args) == 0:
+            sys.exit("No project name specified")
+        package_dir = os.path.dirname(os.path.abspath(__file__))
+        name = command_args[0]
+        snake_case_name = re.sub(
+            r"[^a-z0-9_]", "", name.lower().replace("-", "_"), flags=re.UNICODE)
+        doc_name = snake_case_name.replace("_", "")
+        sys.exit(
+            call(["pivvy-startproject.sh", package_dir, name, snake_case_name, doc_name]))
+    else:
+        sys.exit("%r is not a pivvy command. 'See pivvy --help'." % command)

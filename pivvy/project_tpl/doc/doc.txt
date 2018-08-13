@@ -1,0 +1,45 @@
+*__PLACEHOLDER__.txt*  Brief description of your plugin
+
+CONTENTS                                       *__PLACEHOLDER__-contents*
+
+Introduction                  |__PLACEHOLDER__-introduction|
+Usage                         |__PLACEHOLDER__-usage|
+Commands                      |__PLACEHOLDER__-commands|
+Configuration                 |__PLACEHOLDER__-configuration|
+
+
+===========================================================================
+INTRODUCTION                               *__PLACEHOLDER__-introduction*
+
+Introduce your plugin here.
+
+
+===========================================================================
+USAGE                                             *__PLACEHOLDER__-usage*
+
+This section should explain how to use the plugin.
+>
+	You can put code here.
+<
+
+
+===========================================================================
+COMMANDS                                       *__PLACEHOLDER__-commands*
+
+The plugin defines the following commands:
+
+:Command
+
+This does nothing.
+
+
+===========================================================================
+CONFIGURATION                             *__PLACEHOLDER__-configuration*
+
+The following variables can be used to configure the behaviour of the
+plugin:
+
+`g:sample_global_variable`
+		Brief explanation of the variable. (Default: `0`).
+
+vim:tw=78:sw=8:ts=8:ft=help:norl:noet

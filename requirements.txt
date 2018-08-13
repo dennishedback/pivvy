@@ -1,6 +1,1 @@
-Complete output from command git config --get-regexp remote\..*\.url:
-
-----------------------------------------
 docopt==0.6.2
-## !! Could not determine repository location
-vimpyre==0.1.0
